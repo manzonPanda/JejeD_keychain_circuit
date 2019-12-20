@@ -1,10 +1,10 @@
-int redPin = 4;
-int greenPin = 2;
-int bluePin = 3;
+int redPin = 3;
+int greenPin = 5;
+int bluePin = 6;
 
-int redPin2 = 5;
-int greenPin2 = 6;
-int bluePin2 = 7;
+int redPin2 = 9;
+int greenPin2 = 10;
+int bluePin2 = 11;
 
 int redPin3 = 8;
 int greenPin3 = 9;
@@ -55,22 +55,30 @@ void setup() {
 }
 
 void loop() {
-  //Serial.println( temp = -temp);
-  analogWrite(redPin,255);
-  analogWrite(redPin2,255);
-  analogWrite(redPin3,255);
-  analogWrite(redPin4,255);
-  analogWrite(redPin5,255);
-  analogWrite(redPin6,255);
-  delay(1000); 
-  analogWrite(redPin2,0);
-  analogWrite(redPin3,0);
-  analogWrite(redPin4,0);
-  analogWrite(redPin5,0);
-  analogWrite(redPin6,0);
-  analogWrite(redPin,0);
-
-  delay(1000); 
+ // analogWrite(redPin,255);
+    
+  for (int fadeValue = 0 ; fadeValue <= 255; fadeValue += 5) {
+    analogWrite(redPin, fadeValue);
+	analogWrite(redPin2, fadeValue);
+    delay(30);
+  }
+  
+  for (int fadeValue = 255 ; fadeValue >= 0; fadeValue -= 5) {
+    analogWrite(redPin, fadeValue);
+	analogWrite(redPin2, fadeValue);
+    delay(30);
+  }
+  delay(200); 
+  
+  analogWrite(bluePin, 255);
+  analogWrite(bluePin2, 255);
+   for (int fadeValue = 255 ; fadeValue >= 0; fadeValue -= 5) {
+    analogWrite(bluePin, fadeValue);
+	analogWrite(bluePin2, fadeValue);
+    delay(30);
+  }
+   delay(2000);
+  
  // digitalWrite(redPin,LOW);
   //digitalWrite(greenPin,LOW);
   //digitalWrite(bluePin,LOW);
